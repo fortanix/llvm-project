@@ -22,9 +22,9 @@
 
 // We have to use RWLock from rust repo, it is defined in:
 // src/libstd/sys/sgx/rwlock.rs.
-// rwlock.rs has compile time check to ensure sizeof(RWLock) = 128.
+// rwlock.rs has compile time check to ensure sizeof(RWLock) = 144.
 typedef struct {
-    unsigned char opaque[128];
+    unsigned char opaque[144];
 } RWLock;
 
 // The below is obtained by printing initialized bytes
