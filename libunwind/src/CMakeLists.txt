@@ -56,7 +56,11 @@ if (RUST_SGX)
     # on older platforms.
     #
     # See https://github.com/rust-lang/rust/issues/34978
-    list(APPEND LIBUNWIND_COMPILE_FLAGS -Wa,-mrelax-relocations=no)
+    if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        list(APPEND LIBUNWIND_COMPILE_FLAGS -Wa,-mrelax-relocations=no)
+    else()
+        list(APPEND LIBUNWIND_COMPILE_FLAGS)
+    endif()
 
     # Sources
     list(APPEND LIBUNWIND_C_SOURCES UnwindRustSgx.c)
