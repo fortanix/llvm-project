@@ -19,7 +19,10 @@
 // to export these functions from libunwind.so as well.
 #define _LIBUNWIND_UNWIND_LEVEL1_EXTERNAL_LINKAGE 1
 
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#endif
+
 #pragma GCC diagnostic ignored "-Wempty-body"
 
 #include <inttypes.h>

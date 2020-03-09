@@ -56,7 +56,11 @@ if (RUST_SGX)
     # on older platforms.
     #
     # See https://github.com/rust-lang/rust/issues/34978
-    list(APPEND LIBUNWIND_COMPILE_FLAGS -Wa,-mrelax-relocations=no)
+    if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        list(APPEND LIBUNWIND_COMPILE_FLAGS -Wa,-mrelax-relocations=no)
+    else()
+        list(APPEND LIBUNWIND_COMPILE_FLAGS)
+    endif()
 
     # Sources
     list(APPEND LIBUNWIND_C_SOURCES UnwindRustSgx.c)
@@ -119,9 +123,9 @@ string(REPLACE ";" " " LIBUNWIND_C_FLAGS "${LIBUNWIND_C_FLAGS}")
 string(REPLACE ";" " " LIBUNWIND_LINK_FLAGS "${LIBUNWIND_LINK_FLAGS}")
 
 set_property(SOURCE ${LIBUNWIND_CXX_SOURCES}
-             APPEND_STRING PROPERTY COMPILE_FLAGS " ${CMAKE_CXX_FLAGS} ${LIBUNWIND_CXX_FLAGS}")
+             APPEND_STRING PROPERTY COMPILE_FLAGS " ${LIBUNWIND_CXX_FLAGS}")
 set_property(SOURCE ${LIBUNWIND_C_SOURCES}
-             APPEND_STRING PROPERTY COMPILE_FLAGS " ${CMAKE_C_FLAGS} ${LIBUNWIND_C_FLAGS}")
+             APPEND_STRING PROPERTY COMPILE_FLAGS " ${LIBUNWIND_C_FLAGS}")
 
 # Add a object library that contains the compiled source files.
 add_library(unwind_objects OBJECT ${LIBUNWIND_SOURCES} ${LIBUNWIND_HEADERS})

@@ -10,7 +10,11 @@
 //
 //===----------------------------------------------------------------------===//
 
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
+
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wmissing-braces"
 #pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"

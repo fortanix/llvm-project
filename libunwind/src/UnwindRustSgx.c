@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "UnwindRustSgx.h"
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 
 #define max_log 256
 

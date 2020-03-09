@@ -5,8 +5,13 @@
  * on all source code distributions
  */
 
-#pragma GCC diagnostic ignored "-Wconversion"
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wdiscarded-qualifiers"
+#else
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types-discards-qualifiers"
+#endif
+
+#pragma GCC diagnostic ignored "-Wconversion"
 #pragma GCC diagnostic ignored "-Wfloat-conversion"
 #pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wstrict-overflow"
