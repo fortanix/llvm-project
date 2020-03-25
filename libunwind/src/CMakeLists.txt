@@ -1,5 +1,7 @@
 # Get sources
 
+enable_language(C CXX ASM)
+
 set(LIBUNWIND_CXX_SOURCES
     libunwind.cpp
     Unwind-EHABI.cpp)
@@ -73,7 +75,7 @@ set_source_files_properties(${LIBUNWIND_C_SOURCES}
                               COMPILE_FLAGS "-std=c99")
 set_source_files_properties(${LIBUNWIND_ASM_SOURCES}
                             PROPERTIES
-                              LANGUAGE C)
+                              LANGUAGE ASM)
 
 set(LIBUNWIND_SOURCES
     ${LIBUNWIND_CXX_SOURCES}
