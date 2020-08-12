@@ -35,8 +35,8 @@
  *	@(#)regcomp.c	8.5 (Berkeley) 3/20/94
  */
 
-#include <sys/types.h>
 #include <stdint.h>
+#include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>

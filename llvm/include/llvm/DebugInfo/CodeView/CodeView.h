@@ -18,6 +18,11 @@
 
 #include "llvm/Support/Endian.h"
 
+#undef S_RESERVED1
+#undef S_RESERVED2
+#undef S_RESERVED3
+#undef S_RESERVED4
+
 namespace llvm {
 namespace codeview {
 

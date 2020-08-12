@@ -2,6 +2,10 @@
 
 cmake_minimum_required(VERSION 3.4.3)
 
+# See https://gitlab.kitware.com/cmake/cmake/-/issues/16818
+string(APPEND CMAKE_C_FLAGS_INIT " -pthread")
+string(APPEND CMAKE_CXX_FLAGS_INIT " -pthread")
+
 if ("${CMAKE_VERSION}" VERSION_LESS "3.13.4")
   message(WARNING
     "Your CMake version is ${CMAKE_VERSION}. Starting with LLVM 12.0.0, the "
@@ -914,10 +918,6 @@ if (UNIX AND ${CMAKE_SYSTEM_NAME} MATCHES "AIX")
     string(REGEX REPLACE "(^|[ \t]+)(-Wl,)?-G([ \t]+|$)" "" CMAKE_SHARED_LIBRARY_CREATE_ASM_FLAGS
       "${CMAKE_SHARED_LIBRARY_CREATE_ASM_FLAGS}")
   endif()
-
-  # Modules should be built with -G, so we can use runtime linking with
-  # plugins.
-  string(APPEND CMAKE_MODULE_LINKER_FLAGS " -G")
 
   # Also set the correct flags for building shared libraries.
   string(APPEND CMAKE_SHARED_LINKER_FLAGS " -shared")

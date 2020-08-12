@@ -22,6 +22,8 @@
 #include "llvm/ADT/DenseMapInfo.h"
 #include "llvm/Support/Endian.h"
 
+#undef IA64
+
 namespace llvm {
 namespace minidump {
 
